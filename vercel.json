@@ -1,0 +1,7 @@
+{
+    "public": "dist",
+    "rewrites": [
+      { "source": "/widget.umd.js", "destination": "/dist/widget.umd.js" }
+    ]
+  }
+  
