@@ -1,24 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Widget from './Widget';  // Your React component
+import { createRoot } from 'react-dom/client';
+import Widget from './Widget';
 
-// Define the custom web component
 class WidgetWebComponent extends HTMLElement {
   constructor() {
     super();
     this.mountPoint = document.createElement('div');
-    this.attachShadow({ mode: 'open' }).appendChild(this.mountPoint); // Use shadow DOM
+    this.attachShadow({ mode: 'open' }).appendChild(this.mountPoint); // Shadow DOM
+    this.root = null; // Will hold the root after initialization
   }
 
   connectedCallback() {
     const theme = this.getAttribute('theme') || 'light';
     const username = this.getAttribute('username') || 'guest';
 
-    ReactDOM.render(<Widget theme={theme} username={username} />, this.mountPoint); // Render React component
+    // Use createRoot for React 18
+    this.root = createRoot(this.mountPoint); // Initializes a new root
+    this.root.render(<Widget theme={theme} username={username} />);
   }
 
   disconnectedCallback() {
-    ReactDOM.unmountComponentAtNode(this.mountPoint); // Clean up when removed
+    // Clean up the React component
+    if (this.root) {
+      this.root.unmount(); // Use unmount from the root object in React 18
+    }
   }
 }
 
