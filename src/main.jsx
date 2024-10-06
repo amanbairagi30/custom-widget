@@ -1,35 +1,31 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Widget from './Widget'; // Your React component
-
-// Tailwind CSS as string (use your own or copy from Tailwind's build)
-const tailwindStyles = `
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
-`;
+import { createRoot } from 'react-dom/client';
+import Widget from './Widget';
 
 class WidgetWebComponent extends HTMLElement {
   constructor() {
     super();
     this.mountPoint = document.createElement('div');
-    const styleTag = document.createElement('style');
-    styleTag.textContent = tailwindStyles; // Add Tailwind CSS to shadow DOM
-    const shadow = this.attachShadow({ mode: 'open' });
-    shadow.appendChild(styleTag);
-    shadow.appendChild(this.mountPoint);
+    this.attachShadow({ mode: 'open' }).appendChild(this.mountPoint); // Shadow DOM
+    this.root = null; // Will hold the root after initialization
   }
 
   connectedCallback() {
     const theme = this.getAttribute('theme') || 'light';
     const username = this.getAttribute('username') || 'guest';
 
-    ReactDOM.render(<Widget theme={theme} username={username} />, this.mountPoint);
+    // Use createRoot for React 18
+    this.root = createRoot(this.mountPoint); // Initializes a new root
+    this.root.render(<Widget theme={theme} username={username} />);
   }
 
   disconnectedCallback() {
-    ReactDOM.unmountComponentAtNode(this.mountPoint);
+    // Clean up the React component
+    if (this.root) {
+      this.root.unmount(); // Use unmount from the root object in React 18
+    }
   }
 }
 
+// Register the web component
 customElements.define('widget-web-component', WidgetWebComponent);
