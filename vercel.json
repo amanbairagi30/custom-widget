@@ -1,7 +1,15 @@
 {
-    "public": "dist",
-    "rewrites": [
-      { "source": "/widget.umd.js", "destination": "/dist/widget.umd.js" }
+    "builds": [
+      {
+        "src": "dist/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/widget.umd.js",
+        "dest": "/dist/widget.umd.js"
+      }
     ]
   }
   
