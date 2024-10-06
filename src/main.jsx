@@ -41,4 +41,4 @@ customElements.define('widget-web-component', WidgetWebComponent);
 // Render the component in the main app
 const container = document.getElementById('app'); // Make sure this exists in your HTML
 const root = createRoot(container);
-root.render(<div>Your main app or nothing here for a widget.</div>);
+root.render(<div className='text-black'>Your main app or nothing here for a widget.</div>);
