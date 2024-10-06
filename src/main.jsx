@@ -1,13 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Widget from './Widget';
+import Widget from './Widget'; // Your React component
 
-// Define the custom web component
+// Tailwind CSS as string (use your own or copy from Tailwind's build)
+const tailwindStyles = `
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+`;
+
 class WidgetWebComponent extends HTMLElement {
   constructor() {
     super();
     this.mountPoint = document.createElement('div');
-    this.attachShadow({ mode: 'open' }).appendChild(this.mountPoint);
+    const styleTag = document.createElement('style');
+    styleTag.textContent = tailwindStyles; // Add Tailwind CSS to shadow DOM
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.appendChild(styleTag);
+    shadow.appendChild(this.mountPoint);
   }
 
   connectedCallback() {
@@ -22,5 +32,4 @@ class WidgetWebComponent extends HTMLElement {
   }
 }
 
-// Register the web component
 customElements.define('widget-web-component', WidgetWebComponent);
