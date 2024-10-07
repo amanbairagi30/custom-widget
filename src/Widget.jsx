@@ -8,7 +8,7 @@ const Widget = ({ theme = 'dark', username = 'amanbairagi30' }) => {
 
   const getPullRequests = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/pr/${username}`)
+      const response = await axios.get(`https://www.mergedandshare.in/api/pr/${username}`)
       if (response.data.success) {
         setPullRequests(response.data.userData.pullRequests)
       }
