@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './index.css' // Tailwind
+import './index.css'
 import axios from 'axios'
 import * as LucideIcons from 'lucide-react'
 
