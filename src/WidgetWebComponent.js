@@ -13,24 +13,15 @@ import Widget from './Widget.jsx';
 // };
 
 class WidgetWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: 'open' });
-  }
-
   connectedCallback() {
     const theme = this.getAttribute('theme') || 'light';
     const username = this.getAttribute('username') || 'default-user';
-
-
-    const mountPoint = document.createElement('div');
-    this.shadowRoot.appendChild(mountPoint);
 
     ReactDOM.render(
       <React.StrictMode>
         <Widget theme={theme} username={username} />
       </React.StrictMode>,
-      mountPoint
+      this
     );
   }
 }
