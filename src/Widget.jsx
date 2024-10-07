@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './index.css' // Tailwind
 import axios from 'axios'
-import { CalendarIcon, GitPullRequestIcon, GitForkIcon } from 'lucide-react'
+import * as LucideIcons from 'lucide-react'
 
 const Widget = ({ theme = 'dark', username = 'amanbairagi30' }) => {
   const [pullRequests, setPullRequests] = useState([])
@@ -36,8 +36,9 @@ const Widget = ({ theme = 'dark', username = 'amanbairagi30' }) => {
             rel="noopener noreferrer"
             className="group block h-full"
           >
-            <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl ${theme === 'dark' ? 'border border-gray-700' : ''
-              } h-full flex flex-col`}>
+            <div className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl ${
+              theme === 'dark' ? 'border border-gray-700' : ''
+            } h-full flex flex-col`}>
               <div className="p-6 flex-grow flex flex-col">
                 <div className="flex items-center mb-4">
                   <img src={pr.org.avatar_url} alt={pr.org.name} className="w-10 h-10 rounded-full mr-4" />
@@ -52,16 +53,16 @@ const Widget = ({ theme = 'dark', username = 'amanbairagi30' }) => {
                   {pr.prTitle}
                 </h3>
                 <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-                  <GitForkIcon className="w-4 h-4 mr-2" />
+                  <LucideIcons.GitFork className="w-4 h-4 mr-2" />
                   <span className="truncate">{pr.prURL.split('/')[4]}</span>
                 </div>
                 <div className="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
-                  <CalendarIcon className="w-4 h-4 mr-2" />
+                  <LucideIcons.Calendar className="w-4 h-4 mr-2" />
                   <span>{new Date(pr.mergedAt).toLocaleDateString()}</span>
                 </div>
                 <div className="flex items-center justify-between mt-auto">
                   <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-                    <GitPullRequestIcon className="w-4 h-4 mr-2" />
+                    <LucideIcons.GitPullRequest className="w-4 h-4 mr-2" />
                     Merged
                   </span>
                   <span className="text-sm text-gray-500 dark:text-gray-400">View on GitHub</span>
