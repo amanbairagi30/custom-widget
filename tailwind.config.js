@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  prefix: 'widget-',
-  corePlugins: {
-    preflight: false,
-  },
-  important: '#widget-root',
+  prefix :'widget-',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
