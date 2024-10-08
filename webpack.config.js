@@ -32,21 +32,7 @@ export default {
             },
             {
                 test: /\.css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            postcssOptions: {
-                                plugins: [
-                                    tailwindcss,
-                                    autoprefixer,
-                                ],
-                            },
-                        },
-                    },
-                ],
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
         ],
     },
