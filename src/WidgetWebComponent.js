@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css"
 import Widget from './Widget.jsx';
+import styles from './index.css';
 
 class WidgetWebComponent extends HTMLElement {
   connectedCallback() {
@@ -11,6 +12,12 @@ class WidgetWebComponent extends HTMLElement {
 
     // Create a container for the widget
     const container = document.createElement('div');
+    container.style.cssText = 'contain: content; position: relative; z-index: 1;';
+
+    // Inject styles
+    const styleElement = document.createElement('style');
+    styleElement.textContent = styles;
+    shadowRoot.appendChild(styleElement);
 
     shadowRoot.appendChild(container);
 
