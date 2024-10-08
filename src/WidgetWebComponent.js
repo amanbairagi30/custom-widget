@@ -11,7 +11,6 @@ class WidgetWebComponent extends HTMLElement {
 
     // Create a container for the widget
     const container = document.createElement('div');
-    container.style.cssText = 'contain: content; position: relative; z-index: 1;';
 
     shadowRoot.appendChild(container);
 
