@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css"
 import Widget from './Widget.jsx';
-import widgetStyles from './WebComponent.css';
+import widgetStyles from './index.css';
 
 class WidgetWebComponent extends HTMLElement {
   connectedCallback() {
