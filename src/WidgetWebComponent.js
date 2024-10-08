@@ -21,7 +21,6 @@ class WidgetWebComponent extends HTMLElement {
 
     // shadowRoot.appendChild(container);
 
-
     ReactDOM.render(
       <React.StrictMode>
         <Widget theme={theme} username={username} />
