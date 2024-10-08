@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css"
 import Widget from './Widget.jsx';
+import widgetStyles from './WebComponent.css';
 
 class WidgetWebComponent extends HTMLElement {
   connectedCallback() {
@@ -15,6 +16,10 @@ class WidgetWebComponent extends HTMLElement {
 
     shadowRoot.appendChild(container);
 
+    // Inject Tailwind CSS into Shadow DOM
+    const styleElement = document.createElement('style');
+    styleElement.textContent = widgetStyles; // Inject the compiled CSS content
+    shadowRoot.appendChild(styleElement);
 
     ReactDOM.render(
       <React.StrictMode>
