@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import * as LucideIcons from 'lucide-react'
-import './index.css';
+import styles from './index.css';
 
 const Widget = ({ theme = 'dark', username = 'amanbairagi30' }) => {
   const [pullRequests, setPullRequests] = useState([])
